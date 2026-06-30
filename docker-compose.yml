@@ -46,6 +46,12 @@ services:
       # POR QUÊ não "localhost": cada container tem seu próprio localhost; o
       # banco está em OUTRO container, acessível pelo nome do serviço.
       DATABASE_URL: postgresql+psycopg2://cloudtask:cloudtask@db:5432/cloudtask
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN}
+      STORAGE_MODE: ${STORAGE_MODE:-local}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
     depends_on:
       db:
         # `service_healthy`: a API só sobe DEPOIS que o healthcheck do banco
